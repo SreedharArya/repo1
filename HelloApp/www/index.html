@@ -1,61 +1,228 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title>Hello App</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="jm/jquery.mobile-1.4.5.min.css">
+<script src="jm/jquery-1.11.3.min.js"></script>
+<script src="jm/jquery.mobile-1.4.5.min.js"></script>
+<script src="jm/jquery-1.12.4.min.js"></script>
+
+<script>
+    
+    var $currDiv = null;
+    
+    $(document).ready(function() 
+    {
         
-        <style>
-        #myheader{
-            background-color: greenyellow;
+        $currDiv = $( "#homepg" );        
+       
+        $("#homepg").show();
+        $(".mbox").hide();
+        
+        
+    $("#next").click(function()        
+    {
+            $("#prev").show();
+            strid = $currDiv.attr('id');
+        
+        if(strid=="pageL")
+        {
+           $("#next").hide();
+        }
+        else
+        {
+            $currDiv.next().show();
+            $currDiv.hide();
+            $currDiv=$currDiv.next();
+        } 
+    });
+        
+    $("#prev").click(function()
+    {       
+        
+        strid = $currDiv.attr('id');
+        if(strid=="homepg")
+        {
+            $("#prev").hide();                   
+           
+        }
+        else
+        {
+           
+            
+            $currDiv.prev().show();
+            $currDiv.hide();
+            $currDiv=$currDiv.prev();
             
         }
+   
+    });
+    
+   $("#home").click(function()
+    {       
+       $(".mbox").hide();          
+       $("#homepg").show();
+       $("#prev").show();
+       $("#next").show();
+       $currDiv = $( "#homepg" );             
+      
+    });
         
-        .mbox{
-            background-color: lightskyblue;
-            color:lightgoldenrodyellow;
-            font-family: arial;            
-            border-bottom-right-radius: 10px;
-            border-top-left-radius: 10px;
-            padding:10px;
-            margin: 20px;
-        }
+       
+    
+}); <!-- End of Redy Function -->   
+  
+   
+ 
+    
+</script>
+
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, height=device-height">
+<title>Hello App</title>
         
-        textarea{
-            height: 300px;
-            width: 400px;
-        }
+<style>
+html,body
+{
+    height: 100%;
+}
+/*
+#page-title
+{
+    background-color: lightseagreen;
+    height: 15%;
+}
+
+#page-footer
+{
+    background-color: lightseagreen;
+    height: 5%;
+}*/
+
+ 
+#myheader
         
-        span{
-            background-color: springgreen;
-            color: darkgreen;
-            border-radius:20px;
-            padding:10px;
-        }
+{
+    
+    padding: 3px;
+    background-color:lightseagreen;
+           
+}
+.mypage
+        
+{
+    padding: 3px;
+    background-color:deepskyblue ;
+            
+}
+.ui-dialog-contain {
+	width: 92.5%;
+	max-width: 500px;
+	margin: 10% auto 15px auto;
+	padding: 0;
+	position: relative;
+	top: -15px;
+}    
+    
+.mbox
+{
+
+background-color:lightblue;
+color:lightgoldenrodyellow;
+font-family:sans-serif;   
+border-bottom-right-radius: 5px;
+border-top-left-radius: 5px;
+padding:5px;
+margin: 5px;
+height: auto;
+width: auto;
+
+}
+
+h6,h4 {
+    display: block;    
+    margin-top: 5px;
+    margin-bottom: 5px;   
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+        
+        
+        
     </style>
         
     </head>
     <body>
-            <div id="mobilePage" class="mbox">
-            <div data-role="header">
-                <h3 align="centre"> Hello App</h3>
-            </div>   
         
-            <div id="hellodiv">
-                <span id="helloSpan">Hello All this is my first Hello App</span>        
-            </div>
-            <br/>
-            <div>
-                <hr/>
-                &copy all copyrights reserved, SreedharArya company 2018.
-            </div>
-        
-        </div>
-         </div>
-        <div id="imgdiv">
+ <!-- **************PAGE 1***************** -->    
+<div data-role="page" class="mypage">
+<!--===========================Hader==================================== -->  
+     
+    
+  <div data-role="header" id="page-title" data-position="fixed" class="ui-corner-all">
+    <h4 id="myheader"><font color="white">&nbsp;&nbsp;Welcome to Hello App</font></h4>        
+
+   
+    <a id="prev" href="#" class="ui-btn ui-shadow  ui-btn-inline ui-corner-all ui-mini ui-icon-arrow-l ui-btn-icon-notext ui-shadow-icon"></a>
+    <a id="home" href="#" class="ui-btn ui-shadow  ui-btn-inline ui-corner-all ui-mini ui-icon-home ui-btn-icon-notext ui-shadow-icon"></a>
+    <a id="next" href="#" class="ui-btn ui-shadow  ui-btn-inline ui-corner-all ui-mini ui-icon-arrow-r ui-btn-icon-notext ui-shadow-icon"></a>
+    <!--
+    <a id="prev" href="#" class="ui-btn ui-shadow ui-btn-inline ui-corner-all ui-mini"><img src= "jm\images\icons-png\arrow-l-black.png"/></a>
+    <a id="home" href="#homepg" class="ui-btn ui-shadow ui-btn-inline ui-corner-all ui-mini"><img src= "jm\images\icons-png\home-black.png"/></a>
+    <a id ="next" href="#page2" class="ui-btn ui-shadow ui-btn-inline ui-corner-all ui-mini" ><img src= "jm\images\icons-png\arrow-r-black.png"/></a>
+-->
+ 
+</div>
+    
+<!--=============================================================== -->
+   <!-- **************Home Page***************** -->  
+    <div data-role="main" class="ui-content mbox" id="homepg">      
+      
         <img src="chip.gif"/>
-        </div
-        <!-- ======Script files need to be included============ -->
+         
+       
+       
+        
+   </div>
+    <!-- **************PAGE 1***************** -->  
+    <div data-role="main" class="ui-content mbox" id="page1">
+      
+            <p>page 1</p>
+  <a href="#dia" class="ui-dialog-contain ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="pop" data-close-btn="right">Open dialog</a>
+               
+       
+        
+   </div>
+    <!-- **************PAGE 2***************** --> 
+    <div data-role="main" class="ui-content mbox" id="page2">
+     
+        <p> page 2</p>
+        
+        
+    </div>
+      <!-- **************PAGE 3***************** --> 
+    <div data-role="main" class="ui-content mbox" id="page3">
+     
+        <p> page 3</p>
+        
+        
+    </div>
+    <!-- **************PAGE Last***************** --> 
+    <div data-role="main" class="ui-content mbox" id="pageL">
+     
+        <p> page Last</p>
+        
+        
+    </div>
+   
+<!--===============================Footer================================ -->    
+  <div data-role="footer" id="page-footer" data-position="fixed" class="ui-corner-all" >
+      <h6 id="myheader"><font color="lightyellow">&nbsp;&nbsp;&copy;&nbsp;All Rights Reserved To Sreedhar Arya.&nbsp;</font></h6>
+  </div>
+<!--=============================================================== -->    
+</div> 
+       <!-- ======Script files need to be included============ -->
         <script type="text/javascript" src="cordova.js"></script>
         <!-- ====================================================-->
     </body>
